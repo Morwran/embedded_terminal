@@ -3,6 +3,7 @@
  *
  *  Created on: 28.08.2020
  *      Author: kvb
+ *      mail: mat3x@mail.ru
  */
 
 #ifndef CFG_H_

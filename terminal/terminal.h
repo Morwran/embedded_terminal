@@ -2,7 +2,8 @@
  * terminal.h
  *
  *  Created on: 11.11.2016
- *      Author: ordweist
+ *      Author: kvb
+ *      mail: mat3x@mail.ru
  */
 
 #ifndef TERMINAL_H_

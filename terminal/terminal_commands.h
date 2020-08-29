@@ -2,7 +2,8 @@
  * terminal_commands.h
  *
  *  Created on: 12.11.2016
- *      Author: ordweist
+ *      Author: kvb
+ *      mail: mat3x@mail.ru
  */
 
 #ifndef TERMINAL_COMMANDS_H_

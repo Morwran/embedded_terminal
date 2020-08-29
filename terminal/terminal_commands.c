@@ -1,16 +1,15 @@
 /**
   ******************************************************************************
   * @file           : terminal_commands.c
-  * @brief           Обработчик команд
+  * @brief           terminal handler
   ******************************************************************************
-  ** Файл содержит таблицу доступных команд и их функции-обработчики.
 
-  ******************************************************************************
   */
 
 #include <stdint.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include "string.h"
 #include "terminal_commands.h"
 
 #define last_ver_is (branch_ver[branch_ver_size()-1].ver)
@@ -136,23 +135,23 @@ static void mwr(uint8_t id, uint8_t argc, char * argv[]){
 static void version_handler(uint8_t id, uint8_t argc, char * argv[]){
 	if(argc==2){
 		if(strcmp(ADDR_HW[id],argv[1])==0){
-			tprintf(id,"rply ver %s %s\r\n",last_ver_is,ADDR_HW);
+			tprintf(id,"rply ver %s %s\r\n",last_ver_is,ADDR_HW[id]);
 
 			return;
 		}
 		return;
 	}
 	if(argc==3){
-		if(strcmp(ADDR_HW,argv[2])==0){
+		if(strcmp(ADDR_HW[id],argv[2])==0){
 
 			if(strcmp("about",argv[1])==0){
-				tprintf(id,"rply v%s about: %s %s\r\n",last_ver_is,last_ver_is_about,ADDR_HW);
+				tprintf(id,"rply v%s about: %s %s\r\n",last_ver_is,last_ver_is_about,ADDR_HW[id]);
 
 				return;
 			}
 			if(strcmp("branch",argv[1])==0){
 				for(int i=0;i<branch_ver_size();i++)
-					tprintf(id,"rply v%s about: %s %s\r\n",branch_ver[i].ver,branch_ver[i].about,ADDR_HW);
+					tprintf(id,"rply v%s about: %s %s\r\n",branch_ver[i].ver,branch_ver[i].about,ADDR_HW[id]);
 
 
 				return;
@@ -162,7 +161,7 @@ static void version_handler(uint8_t id, uint8_t argc, char * argv[]){
 				version_t ver_sel=choose_next_ver(0);
 
 				tprintf(id,"rply v%s about: %s %s\r\n",ver_sel.ver,\
-						ver_sel.about,ADDR_HW);
+						ver_sel.about,ADDR_HW[id]);
 
 				return;
 
@@ -171,7 +170,7 @@ static void version_handler(uint8_t id, uint8_t argc, char * argv[]){
 				version_t ver_sel=choose_next_ver(1);
 
 				tprintf(id,"rply v%s about: %s %s\r\n",ver_sel.ver,\
-						ver_sel.about,ADDR_HW);
+						ver_sel.about,ADDR_HW[id]);
 
 				return;
 			}
